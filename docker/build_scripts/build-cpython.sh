@@ -63,3 +63,6 @@ clean_pyc ${PREFIX}
 
 # Strip ELF files found in ${PREFIX}
 strip_ ${PREFIX}
+
+# Link libpython*.so* to /usr/lib/
+cp -rs ${PREFIX}/lib/*.so* /usr/lib/

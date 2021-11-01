@@ -9,6 +9,9 @@ MY_DIR=$(dirname "${BASH_SOURCE[0]}")
 # Get build utilities
 source $MY_DIR/build_utils.sh
 
+# link libpython*.so* to /usr/lib/
+find /opt/_internal/ -iname 'libpython*so*' -exec cp -rs {} /usr/local/lib64/ \;
+
 mkdir /opt/python
 for PREFIX in $(find /opt/_internal/ -mindepth 1 -maxdepth 1 \( -name 'cpython*' -o -name 'pypy*' \)); do
 	# Some python's install as bin/python3. Make them available as
