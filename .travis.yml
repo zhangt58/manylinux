@@ -9,6 +9,7 @@ services:
 branches:
   except:
     - /^update-dependencies-pr/
+    - shared
 
 cache:
   directories:
