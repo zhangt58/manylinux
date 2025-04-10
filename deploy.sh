@@ -11,7 +11,7 @@ fi
 
 set -x
 
-TAG="quay.io/pypa/${POLICY}_${PLATFORM}"
+TAG="tonyzhang/${POLICY}_${PLATFORM}"
 COMMIT_ABBREV_SHA=$(git show -s --format=%h "${COMMIT_SHA}")
 COMMIT_DATE=$(git show -s --format=%cd --date=short "${COMMIT_SHA}")
 BUILD_ID=${COMMIT_DATE}-${COMMIT_ABBREV_SHA}
