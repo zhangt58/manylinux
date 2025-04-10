@@ -5,6 +5,9 @@ set -exuo pipefail
 
 PREFIX=$1
 
+# link libpython*.so* to /usr/lib/
+find /opt/_internal/ -iname 'libpython*so*' -exec cp -rs {} /usr/local/lib64/ \;
+
 # Get script directory
 MY_DIR=$(dirname "${BASH_SOURCE[0]}")
 

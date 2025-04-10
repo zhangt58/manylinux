@@ -42,7 +42,7 @@ pushd "Python-${CPYTHON_VERSION}"
 PREFIX="/opt/_internal/cpython-${CPYTHON_VERSION}"
 mkdir -p "${PREFIX}/lib"
 CFLAGS_EXTRA=""
-CONFIGURE_ARGS=(--disable-shared --with-ensurepip=no)
+CONFIGURE_ARGS=(--enable-shared --enable-optimization --with-ensurepip=no)
 
 if [ "${4:-}" == "nogil" ]; then
 	PREFIX="${PREFIX}-nogil"
@@ -108,3 +108,6 @@ clean_pyc "${PREFIX}"
 
 # Strip ELF files found in ${PREFIX}
 strip_ "${PREFIX}"
+
+# Link libpython*.so* to /usr/lib/
+cp -rs ${PREFIX}/lib/*.so* /usr/lib/
