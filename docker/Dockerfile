@@ -147,11 +147,11 @@ RUN manylinux-entrypoint /build_scripts/build-cpython.sh pablogsal@python.org ht
 FROM build_cpython AS build_cpython312
 RUN manylinux-entrypoint /build_scripts/build-cpython.sh thomas@python.org https://accounts.google.com 3.12.9
 
-FROM build_cpython AS build_cpython313
-RUN manylinux-entrypoint /build_scripts/build-cpython.sh thomas@python.org https://accounts.google.com 3.13.2
+#FROM build_cpython AS build_cpython313
+#RUN manylinux-entrypoint /build_scripts/build-cpython.sh thomas@python.org https://accounts.google.com 3.13.2
 
-FROM build_cpython AS build_cpython313_nogil
-RUN manylinux-entrypoint /build_scripts/build-cpython.sh thomas@python.org https://accounts.google.com 3.13.2 nogil
+#FROM build_cpython AS build_cpython313_nogil
+#RUN manylinux-entrypoint /build_scripts/build-cpython.sh thomas@python.org https://accounts.google.com 3.13.2 nogil
 
 
 FROM runtime_base
@@ -167,8 +167,8 @@ RUN --mount=type=bind,target=/build_cpython36,from=build_cpython36 \
     --mount=type=bind,target=/build_cpython310,from=build_cpython310 \
     --mount=type=bind,target=/build_cpython311,from=build_cpython311 \
     --mount=type=bind,target=/build_cpython312,from=build_cpython312 \
-    --mount=type=bind,target=/build_cpython313,from=build_cpython313 \
-    --mount=type=bind,target=/build_cpython313_nogil,from=build_cpython313_nogil \
+#    --mount=type=bind,target=/build_cpython313,from=build_cpython313 \
+#    --mount=type=bind,target=/build_cpython313_nogil,from=build_cpython313_nogil \
     mkdir -p /opt/_internal && \
     cp -rf /build_cpython*/opt/_internal/* /opt/_internal/ && \
     manylinux-entrypoint /opt/_internal/build_scripts/finalize.sh \
