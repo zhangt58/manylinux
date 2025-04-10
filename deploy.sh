@@ -30,7 +30,7 @@ docker tag "${TAG}:${COMMIT_SHA}" "${TAG}:latest"
 set +x
 
 if [ $DRY_RUN -eq 0 ]; then
-  docker login -u "${QUAY_USERNAME}" -p "${QUAY_PASSWORD}" quay.io
+#  docker login -u "${QUAY_USERNAME}" -p "${QUAY_PASSWORD}" quay.io
   docker push "${TAG}:${BUILD_ID}"
   docker push "${TAG}:${BUILD_ID2}"
   docker push "${TAG}:latest"
