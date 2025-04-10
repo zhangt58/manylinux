@@ -71,7 +71,7 @@ BUILD_ARGS_COMMON=(
 	"--platform=linux/${GOARCH}"
 	--build-arg POLICY --build-arg PLATFORM --build-arg BASEIMAGE
 	--build-arg DEVTOOLSET_ROOTPATH --build-arg PREPEND_PATH --build-arg LD_LIBRARY_PATH_ARG
-	--rm -t "quay.io/pypa/${POLICY}_${PLATFORM}:${COMMIT_SHA}"
+	--rm -t "tonyzhang/${POLICY}_${PLATFORM}:${COMMIT_SHA}"
 	-f docker/Dockerfile docker/
 )
 
@@ -101,7 +101,7 @@ else
 	exit 1
 fi
 
-docker run --rm -v "$(pwd)/tests:/tests:ro" "quay.io/pypa/${POLICY}_${PLATFORM}:${COMMIT_SHA}" /tests/run_tests.sh
+docker run --rm -v "$(pwd)/tests:/tests:ro" "tonyzhang/${POLICY}_${PLATFORM}:${COMMIT_SHA}" /tests/run_tests.sh
 
 if [ ${USE_LOCAL_CACHE} -ne 0 ]; then
 	if [ -d "$(pwd)/.buildx-cache-${POLICY}_${PLATFORM}" ]; then
