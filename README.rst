@@ -1,3 +1,6 @@
+This fork provides cPython builds from 3.6-3.12 with shared python libraries. The generated docker
+images are available at https://hub.docker.com/repository/docker/tonyzhang/manylinux2014_x86_64.
+
 manylinux
 =========
 
